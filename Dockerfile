@@ -1,4 +1,4 @@
-FROM caddy:2.11.1-builder AS builder
+FROM caddy:2.11.2-builder AS builder
 
 # Install gcc, build tools & brotli
 RUN apk --no-cache update && apk add --no-cache brotli-dev gcc musl-dev
@@ -8,7 +8,7 @@ RUN CGO_ENABLED=1 xcaddy build \
     --with github.com/hslatman/caddy-crowdsec-bouncer@v0.10.0 \
     --with github.com/dunglas/caddy-cbrotli@v1.0.1
 
-FROM caddy:2.11.1
+FROM caddy:2.11.2
 
 # Install brotli
 RUN apk --no-cache update && apk add --no-cache brotli-libs
